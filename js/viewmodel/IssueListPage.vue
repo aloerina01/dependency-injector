@@ -11,8 +11,12 @@ console.log(container);
 export default {
     data: function(container) {
         console.log(container);
+        DI.test();
+        let cont = DI.container(VM_ISSUE_LIST_PAGE);
+        // let Issues = System.import(Issues.);
+        console.log(require('/js/model/IssuesImpl'));
         return {
-            issues: new require(container.Issues)()
+            // issues: new require(container.Issues)()
         }
     }
 }

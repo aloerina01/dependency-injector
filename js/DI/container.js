@@ -8,5 +8,8 @@ const map = require('./map');
  * @param {Symbol} containerKey 
  */
 module.exports = function(containerKey) {
-    return map.get(containerKey);
+    if (containerKey) {
+        return map.get(containerKey);
+    }
+    return map;
 }
