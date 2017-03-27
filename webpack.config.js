@@ -1,11 +1,11 @@
 var webpack = require('webpack');
+var path = require('path');
 var DIPlugin = require('./plugins/DIPlugin');
 // var dependency = 
 
 module.exports = {
-  context: __dirname + '/js',
   entry: {
-    'main': './main.js'
+    'main': __dirname + '/js/main.js'
   },
   output: {
     path: __dirname + '/dist',
@@ -21,14 +21,15 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
-        // query: {
-        //   presets: ['es2015']
-        // }
       }
     ]
   },
   resolve: {
-    extensions: [ "", ".vue", ".js" ]
+    extensions: ['.vue', '.js' ],
+    modules: [
+    path.resolve(__dirname + '/js'),
+    path.resolve(__dirname + '/node_modules')
+  ]
   },
   devtool: 'inline-source-map',
   plugins: [

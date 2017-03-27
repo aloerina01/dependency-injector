@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "npm install && npm run build",
-    "build": "NODE_ENV=development gulp",
+    "build": "NODE_ENV=development webpack --watch",
     "production": "NODE_ENV=production gulp production",
     "sass": "gulp sass",
     "minify": "gulp minify",
