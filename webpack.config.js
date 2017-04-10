@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var DIPlugin = require('./plugins/DIPlugin');
+var DI = require('./js/DI/index');
 // var dependency = 
 
 module.exports = {
@@ -33,6 +33,10 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   plugins: [
-    new DIPlugin({ dependency: 'aaaa' })
+    new webpack.DefinePlugin({
+      'process.env.DI_CONTAINER': JSON.stringify(DI.initialize()),
+      'global.test': 'test! test! test!',
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
   ]
 };

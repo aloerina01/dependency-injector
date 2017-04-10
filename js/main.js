@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import dependency from '../dependency';
+
 import App from './App';
 import IssueListPage from './viewmodel/IssueListPage';
 

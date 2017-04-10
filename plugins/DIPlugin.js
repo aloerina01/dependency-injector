@@ -1,17 +1,30 @@
 var DI = require('../js/DI/index');
 
 function DIPlugin(options) {
-    console.log('Dependency=' + options);
+    this.options = options;
 }
 
 DIPlugin.prototype.apply = function(compiler) {
-    compiler.plugin('compile', function(params) {
-        DI.inject('vm_issue_list_page', {
-            Issues: __dirname + '/js/model/IssuesImpl'
+    var op = this.options;
+    compiler.plugin('compilation', function(compilation, data) {
+        data.normalModuleFactory.plugin('parser', function(parser, options) {
+            parser.plugin("call DI.inject", function(expr) {
+                (function(options){console.log(expr)})(op);
+            });
         });
-        console.log('Done Dependency Injection!!');
-        DI.test();
     });
+
+    // compiler.plugin('compilation', function(compilation) {
+    //     compilation.plugin('build-module', function(module) {
+    //         console.log('build module');
+    //         console.log(module);
+    //         DI.inject('vm_issue_list_page', {
+    //             Issues: __dirname + '/js/model/IssuesImpl'
+    //         });
+    //     })
+        
+    //     console.log('Done Dependency Injection!!');
+    // });
 }
 
 module.exports = DIPlugin;

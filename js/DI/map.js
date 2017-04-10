@@ -2,7 +2,13 @@
 
 class DependenciesMap {
     constructor() {
-        this._map = {};
+        console.log(process.env.DI_CONTAINER);
+        if (process.env.DI_CONTAINER) {
+            this._map = process.env.DI_CONTAINER;
+            // this._map = {};
+        } else {
+            this._map = {};
+        }
     }
     put(containerKey, dependencies) {
         this._map[containerKey] = dependencies;
