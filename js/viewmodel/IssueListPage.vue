@@ -20,9 +20,14 @@ export default {
         let cont = DI.container(VM_ISSUE_LIST_PAGE);
         // let Issues = require(cont.Issues);
         let Issues1 = require('model/IssuesImpl');
+        let Issues2 = System.import('model/IssuesImpl');
         let modulePath = 'model/IssuesImpl';
         console.log(modulePath);
-        let Issues2 = require(modulePath);
+        
+        let Issues3 = require('../' + modulePath);
+        // import(modulePath).then((issue) => {
+        //     console.log(issue);
+        // });
         // console.log(require('/js/model/IssuesImpl'));
         return {
             // issues: new require(container.Issues)()
