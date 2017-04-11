@@ -4,7 +4,7 @@ class DependenciesMap {
     constructor() {
         console.log(process.env.DI_CONTAINER);
         if (process.env.DI_CONTAINER) {
-            this._map = process.env.DI_CONTAINER;
+            this._map = process.env.DI_CONTAINER._map;
             // this._map = {};
         } else {
             this._map = {};

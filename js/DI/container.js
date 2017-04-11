@@ -9,7 +9,9 @@ const map = require('./map');
  */
 module.exports = function(containerKey) {
     if (containerKey) {
-        return map.get(containerKey);
+        const path = map.get(containerKey);
+        // TODO: create array which has instances
+        return path;
     }
     return map;
 }

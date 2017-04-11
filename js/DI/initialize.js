@@ -2,10 +2,11 @@
 
 const map = require('./map');
 
-module.exports = function() {
-    map.put('vm_issue_list_page', 'success');
-    map.put('test', 'test');
+module.exports = function(dependencies) {
+    // map.put('vm_issue_list_page',  + '~/js/model/IssuesImpl.js');
+    // map.put('test', 'test');
+    dependencies();
     console.log(map);
-    console.log(JSON.stringify(map));
+
     return map;
 };
