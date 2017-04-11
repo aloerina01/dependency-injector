@@ -8,10 +8,14 @@ const map = require('./map');
  * @param {Symbol} containerKey 
  */
 module.exports = function(containerKey) {
-    if (containerKey) {
-        const path = map.get(containerKey);
-        // TODO: create array which has instances
-        return path;
+    if (!containerKey) {
+        return map;
     }
-    return map;
+    const container = {};
+    const dependencyMap = map.get(containerKey);
+    Object.keys(dependencyMap).forEach((key) => {
+        let dependencyPath = dependencyMap[key];
+        container[key] = (require('../' + dependencyPath));
+    })
+    return container;
 }

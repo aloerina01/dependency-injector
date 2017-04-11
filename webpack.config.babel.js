@@ -38,6 +38,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.DI_CONTAINER': JSON.stringify(DI.initialize(dependencies)),
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+    }),
+    new webpack.ContextReplacementPlugin(
+      /js\/DI/, '/js', true
+    )
   ]
 };
